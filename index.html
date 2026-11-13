@@ -35,7 +35,7 @@ Appartement T2 avec terrasse et jardin privatif à partir de 172.000€ (station
 
                                             Rencontrons nous pour échanger sur votre projet et valider votre éligibilité !</p>
    </article>
-   <aside class="formbox"><h2>Intéressé par cette opportunité ?</h2><div id="feedback" class="notice ok" role="status" aria-live="polite">Personnalisation enregistrée.</div>
+   <aside class="formbox"><h2>Intéressé par cette opportunité ?</h2><div id="feedback" class="notice hidden" role="status" aria-live="polite"></div>
     <form id="leadForm">
      <div class="field"><label for="name">Nom et prénom *</label><input id="name" name="name" autocomplete="name" required="" maxlength="120" placeholder="Jean Dupont"></div>
      <div class="field"><label for="phone">Téléphone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required="" maxlength="30" placeholder="06 12 34 56 78"></div>
@@ -56,7 +56,8 @@ Appartement T2 avec terrasse et jardin privatif à partir de 172.000€ (station
   </section>
   <section class="value-strip" aria-label="Votre accompagnement"><div class="value-item"><div class="value-icon">⌂</div><b>Un échange personnalisé</b><span>Présentez votre projet et vos disponibilités. Notre conseiller revient vers vous.</span></div><div class="value-item"><div class="value-icon">◷</div><b>Une visite sur rendez-vous</b><span>Choisissez une demande de rappel ou proposez un créneau de rendez-vous.</span></div><div class="value-item"><div class="value-icon">✓</div><b>Un suivi de votre demande</b><span>Vous recevez un accusé de réception lorsque votre demande est prise en compte.</span></div></section>
  </main>
- <footer class="foot"><strong id="advisor">AURELIEN BAJARD</strong> · <a id="phoneLink" href="tel:0684107146">06-84-10-71-46</a> · <a id="emailLink" href="mailto:aurelien.bajard@orpi.com">aurelien.bajard@orpi.com</a><div id="agencyAddress">108 avenue du General de Gaulle 34400 Lunel</div></footer>
+ <footer class="foot"><strong id="advisor">AURELIEN BAJARD</strong> · <a id="phoneLink" href="tel:0684107146">06-84-10-71-46</a> · <a id="emailLink" href="mailto:aurelien.bajard@orpi.com">aurelien.bajard@orpi.com</a><div id="agencyAddress">188 avenue du General de Gaulle 34400 Lunel</div></footer>
+ 
 </div>
 <script>
 'use strict';
@@ -72,20 +73,19 @@ const brandName=$('brandName'), badge=$('badge'), sector=$('sector'), headline=$
  day=$('day'), slot=$('slot'), place=$('place'), address=$('address'),
  addressWrap=$('addressWrap'), consent=$('consent'), adminPanel=$('adminPanel'),
  testModeButton=$('testMode');
-const DEFAULTS=/*CONFIG_DEFAULTS*/{"project":"Location Accession à Castries","primary":"#D6001C","badge":"A NE PAS MANQUER !!!","sector":"Castries","title":"T2 à partir de","rent":"850","rentLabel":"Loyer mensuel","photo":"https://v.seloger.com/s/width/860/visuels/1/e/p/a/1epaqq6ndb9k32rgeca8gl6x9cgqkg6y9xs0miiso.jpg","description":"L'expertise OCI à votre disposition :\n\nNe manquez pas l'opportunité de transformer vos loyers en résidence principale. \n\nPTZ 2026 (Zone B1) - Prêt 1% - financement personnalisé .\n\nAppartement T2 avec terrasse et jardin privatif à partir de 172.000€ (stationnement inclus)\n\n                                            Rencontrons nous pour échanger sur votre projet et valider votre éligibilité !","advisor":"AURELIEN BAJARD","phone":"06-84-10-71-46","email":"aurelien.bajard@orpi.com","agencyAddress":"108 avenue du General de Gaulle 34400 Lunel"};
+const DEFAULTS=/*CONFIG_DEFAULTS*/{"project":"Location Accession à Castries","primary":"#D6001C","badge":"A NE PAS MANQUER !!!","sector":"Castries","title":"T2 à partir de","rent":"850","rentLabel":"Loyer mensuel","photo":"https://v.seloger.com/s/width/860/visuels/1/e/p/a/1epaqq6ndb9k32rgeca8gl6x9cgqkg6y9xs0miiso.jpg","description":"L'expertise OCI à votre disposition :\n\nNe manquez pas l'opportunité de transformer vos loyers en résidence principale. \n\nPTZ 2026 (Zone B1) - Prêt 1% - financement personnalisé .\n\nAppartement T2 avec terrasse et jardin privatif à partir de 172.000€ (stationnement inclus)\n\n                                            Rencontrons nous pour échanger sur votre projet et valider votre éligibilité !","advisor":"AURELIEN BAJARD","phone":"06-84-10-71-46","email":"aurelien.bajard@orpi.com","agencyAddress":"188 avenue du General de Gaulle 34400 Lunel"};
 const DEFAULT_ENDPOINT="https://script.google.com/macros/s/AKfycbxzELL9zzZsEgryyw0wbKwBvKEnDZpbAr2__6w9ADr18jZF5GA1bS-ypqH04yharclxEQ/exec";
-const DEFAULT_AGENCY_EMAIL="aurelien.bajard@orpi.com";
- 
+const DEFAULT_AGENCY_EMAIL='aurelien.bajard@orpi.com';
 const DEFAULT_TEST_MODE=false;
 const CONFIG_KEYS={project:'Nom du projet',primary:'Couleur principale (#hex)',badge:'Badge',sector:'Secteur géographique',title:'Titre principal',rent:'Loyer (nombre)',rentLabel:'Libellé du loyer',photo:'URL photo',description:'Description',advisor:'Nom conseiller / agence',phone:'Téléphone',email:'E-mail',agencyAddress:'Adresse agence'};
 const SLOTS=['10:00–11:30','11:00–12:30','14:00–15:30','15:30–17:00','16:00–17:30'];
-let config=structuredClone(DEFAULTS), leads=[], mode='rappel', testMode=false;
+let config=load('oci_config',DEFAULTS), leads=load('oci_leads',[]), mode='rappel', testMode=load('oci_test_mode',DEFAULT_TEST_MODE);
 function load(k,f){try{return JSON.parse(localStorage.getItem(k))??structuredClone(f)}catch{return structuredClone(f)}}
 function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function applyConfig(){document.documentElement.style.setProperty('--primary',/^#[0-9a-f]{6}$/i.test(config.primary)?config.primary:DEFAULTS.primary);
  document.title=config.project;brandName.textContent=config.project.toUpperCase();badge.textContent=config.badge;sector.textContent='Secteur '+config.sector;headline.textContent=config.title;price.textContent=Number(config.rent||0).toLocaleString('fr-FR')+' €';priceLabel.textContent=config.rentLabel;descriptionEl.textContent=config.description;advisor.textContent=config.advisor;phoneLink.textContent=config.phone;phoneLink.href='tel:'+config.phone.replace(/[^\d+]/g,'');emailLink.textContent=config.email;emailLink.href='mailto:'+config.email;agencyAddress.textContent=config.agencyAddress;heroImage.src=config.photo||DEFAULTS.photo;heroImage.onerror=()=>heroImage.src=DEFAULTS.photo;
 }
-function buildConfig(){configFields.innerHTML='';Object.entries(CONFIG_KEYS).forEach(([key,label])=>{let wrap=document.createElement('div');wrap.className='field'+(key==='description'||key==='photo'?' wide':'');let lab=document.createElement('label');lab.textContent=label;let input=key==='description'?document.createElement('textarea'):document.createElement('input');input.id='cfg_'+key;input.value=config[key]??'';if(key==='description')input.rows=3;wrap.append(lab,input);configFields.append(wrap)});endpoint.value=DEFAULT_ENDPOINT;agencyEmail.value=DEFAULT_AGENCY_EMAIL}
+function buildConfig(){configFields.innerHTML='';Object.entries(CONFIG_KEYS).forEach(([key,label])=>{let wrap=document.createElement('div');wrap.className='field'+(key==='description'||key==='photo'?' wide':'');let lab=document.createElement('label');lab.textContent=label;let input=key==='description'?document.createElement('textarea'):document.createElement('input');input.id='cfg_'+key;input.value=config[key]??'';if(key==='description')input.rows=3;wrap.append(lab,input);configFields.append(wrap)});endpoint.value=load('oci_endpoint',DEFAULT_ENDPOINT);agencyEmail.value=load('oci_agency_email',DEFAULT_AGENCY_EMAIL)}
 function renderLeads(){leadCount.textContent=leads.length;rdvCount.textContent=leads.filter(x=>x.type_contact==='rdv').length;leadRows.innerHTML='';leads.slice().reverse().forEach(x=>{let tr=document.createElement('tr');[x.date_saisie,x.nom,x.telephone,x.email,x.type_contact,x.jour_rdv?x.jour_rdv+' '+x.heure_rdv:'—'].forEach(v=>{let td=document.createElement('td');td.textContent=v||'—';tr.append(td)});leadRows.append(tr)})}
 function setMode(m){mode=m;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));rdvFields.classList.toggle('hidden',m!=='rdv');day.required=m==='rdv';slot.required=m==='rdv';}
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
@@ -118,13 +118,42 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();feedback.classNa
  submitBtn.disabled=true;submitBtn.textContent='Enregistrement…';
  try{
   if(testMode){leads.push(data);save('oci_leads',leads);renderLeads();showMessage('Mode test : demande enregistrée uniquement dans ce navigateur. Aucune notification n’a été envoyée.',true)}
-else{const url=DEFAULT_ENDPOINT;let result=await submitViaForm(url,data);if(!result.ok)throw Error(result.error||'Le serveur a refusé la demande.');showMessage(result.message||'Demande reçue par le service. Vous serez recontacté(e).',true)}
+  else{let url=(endpoint.value||'').trim()||DEFAULT_ENDPOINT;if(!url)throw Error('Ajoute l’URL du script dans Personnaliser / Tester.');save('oci_endpoint',url);let result=await submitViaForm(url,data);if(!result.ok)throw Error(result.error||'Le serveur a refusé la demande.');showMessage(result.message||'Demande reçue par le service. Vous serez recontacté(e).',true)}
   leadForm.reset();setMode('rappel');addressWrap.classList.add('hidden');
  }catch(err){showMessage('Envoi non confirmé : '+err.message+' Votre demande n’a pas été annoncée comme envoyée.',false)}
  finally{submitBtn.disabled=false;submitBtn.textContent='Valider ma demande'}
 });
 function showMessage(msg,ok){feedback.textContent=msg;feedback.className='notice '+(ok?'ok':'err')}
+applyConfig();buildConfig();",adminCodeStart);
 
-applyConfig();initDays();refreshSlots();
+ if(adminCodeStart!==-1 && adminCodeEnd!==-1){
+   source=source.slice(0,adminCodeStart)+source.slice(adminCodeEnd);
+ }
+
+ source=source.replace(
+   /const DEFAULT_ENDPOINT='[^']*';/,
+   'const DEFAULT_ENDPOINT='+JSON.stringify(url)+';'
+ );
+ source=source.replace(
+   'const DEFAULT_TEST_MODE=true;',
+   'const DEFAULT_TEST_MODE=false;'
+ );
+
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(new Blob([source],{type:'text/html;charset=utf-8'}));
+ a.download='landing-page-oci-personnalisee.html';
+ a.click();
+ URL.revokeObjectURL(a.href);
+};
+
+$('resetConfig').onclick=()=>{if(confirm('Restaurer les paramètres d’origine ?')){config=structuredClone(DEFAULTS);save('oci_config',config);buildConfig();applyConfig()}};
+$('testMode').onclick=()=>{testMode=!testMode;save('oci_test_mode',testMode);testModeBtn()};
+function testModeBtn(){testModeButton.textContent='Mode test local : '+(testMode?'activé':'désactivé (réel)');}
+testModeBtn();
+$('exportCsv').onclick=()=>{if(!leads.length){alert('Aucune demande locale à exporter.');return}let cols=['date_saisie','nom','telephone','email','type_contact','jour_rdv','heure_rdv','lieu_rdv','adresse_domicile'];let csv=[cols.join(';'),...leads.map(x=>cols.map(k=>'"'+String(x[k]??'').replace(/"/g,'""')+'"').join(';'))].join('\r\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='registre_rendez_vous.csv';a.click();URL.revokeObjectURL(a.href)};
+$('clearLeads').onclick=()=>{if(confirm('Effacer toutes les demandes locales de test ?')){leads=[];save('oci_leads',leads);renderLeads()}};
+$('runChecks').onclick=runChecks;function runChecks(){let checks=[['Formulaire présent',!!leadForm],['Validation e-mail native',emailInput.type==='email'],['Consentement obligatoire',consent.required],['Mode test sans envoi externe',testMode],['URL endpoint configurée',!!load('oci_endpoint','')],['Couleur valide',/^#[0-9a-f]{6}$/i.test(config.primary)],['Jours ouvrés générés',day.options.length>0]];diagnostics.innerHTML=checks.map(([a,b])=>(b?'✅ ':'⚠️ ')+a+(b?'':' — à vérifier')).join('<br>')}
+$('testEndpoint').onclick=async()=>{let url=endpoint.value.trim();connectionResult.textContent='';if(!url){connectionResult.textContent='Ajoute d’abord l’URL du déploiement.';return}try{let r=await fetch(url,{method:'GET'});let j=await r.json();connectionResult.textContent=r.ok&&j.ok?'Connexion OK : '+j.message:'Réponse inattendue : '+JSON.stringify(j)}catch(e){connectionResult.textContent='Le test direct peut être bloqué par CORS (Failed to fetch). Cela ne teste pas l’envoi du formulaire, qui utilise une iframe. Vérifie l’URL affichée et teste une demande réelle.'}}
+applyConfig();buildConfig();initDays();refreshSlots();renderLeads();runChecks();
 </script>
 </body></html>
