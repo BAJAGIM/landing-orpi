@@ -57,35 +57,6 @@ Appartement T2 avec terrasse et jardin privatif à partir de 172.000€ (station
   <section class="value-strip" aria-label="Votre accompagnement"><div class="value-item"><div class="value-icon">⌂</div><b>Un échange personnalisé</b><span>Présentez votre projet et vos disponibilités. Notre conseiller revient vers vous.</span></div><div class="value-item"><div class="value-icon">◷</div><b>Une visite sur rendez-vous</b><span>Choisissez une demande de rappel ou proposez un créneau de rendez-vous.</span></div><div class="value-item"><div class="value-icon">✓</div><b>Un suivi de votre demande</b><span>Vous recevez un accusé de réception lorsque votre demande est prise en compte.</span></div></section>
  </main>
  <footer class="foot"><strong id="advisor">AURELIEN BAJARD</strong> · <a id="phoneLink" href="tel:0684107146">06-84-10-71-46</a> · <a id="emailLink" href="mailto:aurelien.bajard@orpi.com">aurelien.bajard@orpi.com</a><div id="agencyAddress">108 avenue du General de Gaulle 34400 Lunel</div></footer>
- <section class="admin" id="adminPanel">
- 
-<section class="admin" id="adminPanel">
-  <h2>Personnalisation &amp; espace de test</h2>
-  <p class="tiny">Les modifications sont enregistrées dans ce navigateur. Le mode test ne transmet aucune donnée à un service externe.</p>
-
-  <details open id="requestControl">
-    <summary>Gestion de l'ouverture des demandes</summary>
-    <p id="requestStatus" class="notice">Vérification de l'état des demandes…</p>
-    <div class="toolbar">
-      <button class="btn secondary small" id="closeRequests" type="button">Fermer les demandes</button>
-      <button class="btn small" id="openRequests" type="button">Ouvrir les demandes</button>
-      <button class="btn secondary small" id="refreshRequests" type="button">Actualiser le statut</button>
-    </div>
-    <p class="tiny">La fermeture bloque les nouvelles demandes sur la page publique. Les demandes déjà enregistrées restent conservées.</p>
-  </details>
-  <div class="toolbar"><button class="btn secondary small" id="testMode">Mode test local : désactivé (réel)</button><button class="btn secondary small" id="saveConfig">Enregistrer les réglages</button><button class="btn secondary small" id="resetConfig">Réglages d'origine</button><button class="btn small" id="downloadSite">Télécharger la page personnalisée</button></div>
-  <details open=""><summary>Contenu de la page</summary><div class="admin-grid" id="configFields"><div class="field"><label>Nom du projet</label><input id="cfg_project"></div><div class="field"><label>Couleur principale (#hex)</label><input id="cfg_primary"></div><div class="field"><label>Badge</label><input id="cfg_badge"></div><div class="field"><label>Secteur géographique</label><input id="cfg_sector"></div><div class="field"><label>Titre principal</label><input id="cfg_title"></div><div class="field"><label>Loyer (nombre)</label><input id="cfg_rent"></div><div class="field"><label>Libellé du loyer</label><input id="cfg_rentLabel"></div><div class="field wide"><label>URL photo</label><input id="cfg_photo"></div><div class="field wide"><label>Description</label><textarea id="cfg_description" rows="3"></textarea></div><div class="field"><label>Nom conseiller / agence</label><input id="cfg_advisor"></div><div class="field"><label>Téléphone</label><input id="cfg_phone"></div><div class="field"><label>E-mail</label><input id="cfg_email"></div><div class="field"><label>Adresse agence</label><input id="cfg_agencyAddress"></div></div></details>
-  <details open=""><summary>Connexion et automatisations</summary><div class="admin-grid">
-   <div class="field wide"><label for="endpoint">URL Google Apps Script (déploiement Web App)</label><input id="endpoint" placeholder="https://script.google.com/macros/s/.../exec"></div>
-   <div class="field wide"><label for="agencyEmail">E-mail de réception des prospects (configuré aussi dans Apps Script)</label><input id="agencyEmail" type="email" placeholder="agence@exemple.fr"></div>
-  </div><p class="tiny">En mode réel, les demandes sont envoyées au script. Les e-mails de confirmation et rappels nécessitent de déployer le fichier Code.gs fourni. Aucun SMS n'est envoyé.</p></details>
-  <details open=""><summary>Demandes enregistrées sur cet appareil</summary>
-   <div class="stats"><div class="stat"><b id="leadCount">7</b><span class="tiny">Demandes</span></div><div class="stat"><b id="rdvCount">1</b><span class="tiny">Rendez-vous</span></div></div>
-   <div class="toolbar"><button class="btn small" id="exportCsv">Exporter CSV</button><button class="btn secondary small" id="clearLeads">Effacer les tests locaux</button></div>
-   <div class="tablewrap"><table><thead><tr><th>Date</th><th>Nom</th><th>Téléphone</th><th>E-mail</th><th>Type</th><th>RDV</th></tr></thead><tbody id="leadRows"><tr><td>03/11/2026 11:00:35</td><td>PHNAY TEST</td><td>685409745</td><td>aurelien.bajard@orpi.com</td><td>rappel</td><td>—</td></tr><tr><td>03/11/2026 10:21:08</td><td>Noah</td><td>685409745</td><td>aurelien.bajard@orpi.com</td><td>rappel</td><td>—</td></tr><tr><td>03/11/2026 10:17:01</td><td>sakh</td><td>684107146</td><td>aurelienbajard@orpi.com</td><td>rappel</td><td>—</td></tr><tr><td>03/11/2026 10:08:10</td><td>kok</td><td>684107146</td><td>aurelienbajard@orpi.com</td><td>rappel</td><td>—</td></tr><tr><td>03/11/2026 09:51:10</td><td>BAJ</td><td>684107146</td><td>aurelienbajard@orpi.com</td><td>rdv</td><td>2026-11-10 14:00–15:30</td></tr><tr><td>02/11/2026 18:19:48</td><td>BAJ</td><td>684107146</td><td>aurelienbajard@orpi.com</td><td>rappel</td><td>—</td></tr><tr><td>02/11/2026 18:09:58</td><td>BAJ</td><td>684107146</td><td>aurelien.bajard@orpi.com</td><td>rappel</td><td>—</td></tr></tbody></table></div>
-  </details>
-  <details><summary>Vérification technique</summary><div id="diagnostics" class="tiny">✅ Formulaire présent<br>✅ Validation e-mail native<br>✅ Consentement obligatoire<br>⚠️ Mode test sans envoi externe — à vérifier<br>✅ URL endpoint configurée<br>✅ Couleur valide<br>✅ Jours ouvrés générés</div><div class="toolbar"><button class="btn secondary small" id="runChecks">Relancer les vérifications</button><button class="btn secondary small" id="testEndpoint">Tester la connexion</button></div><div id="connectionResult" class="status"></div></details>
- </section>
 </div>
 <script>
 'use strict';
@@ -104,10 +75,11 @@ const brandName=$('brandName'), badge=$('badge'), sector=$('sector'), headline=$
 const DEFAULTS=/*CONFIG_DEFAULTS*/{"project":"Location Accession à Castries","primary":"#D6001C","badge":"A NE PAS MANQUER !!!","sector":"Castries","title":"T2 à partir de","rent":"850","rentLabel":"Loyer mensuel","photo":"https://v.seloger.com/s/width/860/visuels/1/e/p/a/1epaqq6ndb9k32rgeca8gl6x9cgqkg6y9xs0miiso.jpg","description":"L'expertise OCI à votre disposition :\n\nNe manquez pas l'opportunité de transformer vos loyers en résidence principale. \n\nPTZ 2026 (Zone B1) - Prêt 1% - financement personnalisé .\n\nAppartement T2 avec terrasse et jardin privatif à partir de 172.000€ (stationnement inclus)\n\n                                            Rencontrons nous pour échanger sur votre projet et valider votre éligibilité !","advisor":"AURELIEN BAJARD","phone":"06-84-10-71-46","email":"aurelien.bajard@orpi.com","agencyAddress":"108 avenue du General de Gaulle 34400 Lunel"};
 const DEFAULT_ENDPOINT="https://script.google.com/macros/s/AKfycbxzELL9zzZsEgryyw0wbKwBvKEnDZpbAr2__6w9ADr18jZF5GA1bS-ypqH04yharclxEQ/exec";
 const DEFAULT_AGENCY_EMAIL="aurelien.bajard@orpi.com";
+ 
 const DEFAULT_TEST_MODE=false;
 const CONFIG_KEYS={project:'Nom du projet',primary:'Couleur principale (#hex)',badge:'Badge',sector:'Secteur géographique',title:'Titre principal',rent:'Loyer (nombre)',rentLabel:'Libellé du loyer',photo:'URL photo',description:'Description',advisor:'Nom conseiller / agence',phone:'Téléphone',email:'E-mail',agencyAddress:'Adresse agence'};
 const SLOTS=['10:00–11:30','11:00–12:30','14:00–15:30','15:30–17:00','16:00–17:30'];
-let config=load('oci_config',DEFAULTS), leads=load('oci_leads',[]), mode='rappel', testMode=load('oci_test_mode',DEFAULT_TEST_MODE);
+let config=structuredClone(DEFAULTS), leads=[], mode='rappel', testMode=false;
 function load(k,f){try{return JSON.parse(localStorage.getItem(k))??structuredClone(f)}catch{return structuredClone(f)}}
 function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function applyConfig(){document.documentElement.style.setProperty('--primary',/^#[0-9a-f]{6}$/i.test(config.primary)?config.primary:DEFAULTS.primary);
@@ -146,38 +118,13 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();feedback.classNa
  submitBtn.disabled=true;submitBtn.textContent='Enregistrement…';
  try{
   if(testMode){leads.push(data);save('oci_leads',leads);renderLeads();showMessage('Mode test : demande enregistrée uniquement dans ce navigateur. Aucune notification n’a été envoyée.',true)}
-  else{let url=(endpoint.value||'').trim()||DEFAULT_ENDPOINT;if(!url)throw Error('Ajoute l’URL du script dans Personnaliser / Tester.');save('oci_endpoint',url);let result=await submitViaForm(url,data);if(!result.ok)throw Error(result.error||'Le serveur a refusé la demande.');showMessage(result.message||'Demande reçue par le service. Vous serez recontacté(e).',true)}
+else{const url=DEFAULT_ENDPOINT;let result=await submitViaForm(url,data);if(!result.ok)throw Error(result.error||'Le serveur a refusé la demande.');showMessage(result.message||'Demande reçue par le service. Vous serez recontacté(e).',true)}
   leadForm.reset();setMode('rappel');addressWrap.classList.add('hidden');
  }catch(err){showMessage('Envoi non confirmé : '+err.message+' Votre demande n’a pas été annoncée comme envoyée.',false)}
  finally{submitBtn.disabled=false;submitBtn.textContent='Valider ma demande'}
 });
 function showMessage(msg,ok){feedback.textContent=msg;feedback.className='notice '+(ok?'ok':'err')}
-if($('toggleAdmin'))$('toggleAdmin').onclick=()=>adminPanel.classList.toggle('hidden');
-$('saveConfig').onclick=()=>{Object.keys(CONFIG_KEYS).forEach(k=>config[k]=document.getElementById('cfg_'+k).value.trim());if(!/^#[0-9a-f]{6}$/i.test(config.primary)){alert('La couleur doit être au format #RRGGBB');return}save('oci_config',config);save('oci_endpoint',endpoint.value.trim());save('oci_agency_email',agencyEmail.value.trim());applyConfig();showMessage('Personnalisation enregistrée.',true)};
 
-document.getElementById('downloadSite').onclick=()=>{
- const url=endpoint.value.trim();
- if(!testMode && !url){alert('Configure une URL de service avant de préparer une version réelle.');return}
- let source='<!doctype html>\n'+document.documentElement.outerHTML;
- source=source.replace(/<button class="btn secondary small" id="toggleAdmin">[\s\S]*?<\/button>/,'');
- source=source.replace("$('toggleAdmin').onclick=()=>adminPanel.classList.toggle('hidden');","if($('toggleAdmin'))$('toggleAdmin').onclick=()=>adminPanel.classList.toggle('hidden');");
- const marker='const DEFAULTS=/*CONFIG_DEFAULTS*/';
- const start=source.indexOf(marker), end=source.indexOf('};',start)+2;
- if(start>=0 && end>1) source=source.slice(0,start)+marker+JSON.stringify(config)+';'+source.slice(end);
- source=source.replace("const DEFAULT_ENDPOINT='https://script.google.com/macros/s/AKfycbxzELL9zzZsEgryyw0wbKwBvKEnDZpbAr2__6w9ADr18jZF5GA1bS-ypqH04yharclxEQ/exec';", 'const DEFAULT_ENDPOINT='+JSON.stringify(url)+';');
- source=source.replace("const DEFAULT_AGENCY_EMAIL='aurelien.bajard@orpi.com';", 'const DEFAULT_AGENCY_EMAIL='+JSON.stringify(agencyEmail.value.trim()||config.email)+';');
- source=source.replace('const DEFAULT_TEST_MODE=true;', 'const DEFAULT_TEST_MODE='+(!url)+';');
- const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([source],{type:'text/html;charset=utf-8'}));a.download='landing-page-oci-personnalisee.html';a.click();URL.revokeObjectURL(a.href);
-};
-
-$('resetConfig').onclick=()=>{if(confirm('Restaurer les paramètres d’origine ?')){config=structuredClone(DEFAULTS);save('oci_config',config);buildConfig();applyConfig()}};
-$('testMode').onclick=()=>{testMode=!testMode;save('oci_test_mode',testMode);testModeBtn()};
-function testModeBtn(){testModeButton.textContent='Mode test local : '+(testMode?'activé':'désactivé (réel)');}
-testModeBtn();
-$('exportCsv').onclick=()=>{if(!leads.length){alert('Aucune demande locale à exporter.');return}let cols=['date_saisie','nom','telephone','email','type_contact','jour_rdv','heure_rdv','lieu_rdv','adresse_domicile'];let csv=[cols.join(';'),...leads.map(x=>cols.map(k=>'"'+String(x[k]??'').replace(/"/g,'""')+'"').join(';'))].join('\r\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='registre_rendez_vous.csv';a.click();URL.revokeObjectURL(a.href)};
-$('clearLeads').onclick=()=>{if(confirm('Effacer toutes les demandes locales de test ?')){leads=[];save('oci_leads',leads);renderLeads()}};
-$('runChecks').onclick=runChecks;function runChecks(){let checks=[['Formulaire présent',!!leadForm],['Validation e-mail native',emailInput.type==='email'],['Consentement obligatoire',consent.required],['Mode test sans envoi externe',testMode],['URL endpoint configurée',!!load('oci_endpoint','')],['Couleur valide',/^#[0-9a-f]{6}$/i.test(config.primary)],['Jours ouvrés générés',day.options.length>0]];diagnostics.innerHTML=checks.map(([a,b])=>(b?'✅ ':'⚠️ ')+a+(b?'':' — à vérifier')).join('<br>')}
-$('testEndpoint').onclick=async()=>{let url=endpoint.value.trim();connectionResult.textContent='';if(!url){connectionResult.textContent='Ajoute d’abord l’URL du déploiement.';return}try{let r=await fetch(url,{method:'GET'});let j=await r.json();connectionResult.textContent=r.ok&&j.ok?'Connexion OK : '+j.message:'Réponse inattendue : '+JSON.stringify(j)}catch(e){connectionResult.textContent='Le test direct peut être bloqué par CORS (Failed to fetch). Cela ne teste pas l’envoi du formulaire, qui utilise une iframe. Vérifie l’URL affichée et teste une demande réelle.'}}
-applyConfig();buildConfig();initDays();refreshSlots();renderLeads();runChecks();
+applyConfig();initDays();refreshSlots();
 </script>
 </body></html>
