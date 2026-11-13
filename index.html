@@ -58,7 +58,21 @@ Appartement T2 avec terrasse et jardin privatif à partir de 172.000€ (station
  </main>
  <footer class="foot"><strong id="advisor">AURELIEN BAJARD</strong> · <a id="phoneLink" href="tel:0684107146">06-84-10-71-46</a> · <a id="emailLink" href="mailto:aurelien.bajard@orpi.com">aurelien.bajard@orpi.com</a><div id="agencyAddress">108 avenue du General de Gaulle 34400 Lunel</div></footer>
  <section class="admin" id="adminPanel">
-  <h2>Personnalisation &amp; espace de test</h2><p class="tiny">Les modifications sont enregistrées dans ce navigateur. Le mode test ne transmet aucune donnée à un service externe.</p>
+ 
+<section class="admin" id="adminPanel">
+  <h2>Personnalisation &amp; espace de test</h2>
+  <p class="tiny">Les modifications sont enregistrées dans ce navigateur. Le mode test ne transmet aucune donnée à un service externe.</p>
+
+  <details open id="requestControl">
+    <summary>Gestion de l'ouverture des demandes</summary>
+    <p id="requestStatus" class="notice">Vérification de l'état des demandes…</p>
+    <div class="toolbar">
+      <button class="btn secondary small" id="closeRequests" type="button">Fermer les demandes</button>
+      <button class="btn small" id="openRequests" type="button">Ouvrir les demandes</button>
+      <button class="btn secondary small" id="refreshRequests" type="button">Actualiser le statut</button>
+    </div>
+    <p class="tiny">La fermeture bloque les nouvelles demandes sur la page publique. Les demandes déjà enregistrées restent conservées.</p>
+  </details>
   <div class="toolbar"><button class="btn secondary small" id="testMode">Mode test local : désactivé (réel)</button><button class="btn secondary small" id="saveConfig">Enregistrer les réglages</button><button class="btn secondary small" id="resetConfig">Réglages d'origine</button><button class="btn small" id="downloadSite">Télécharger la page personnalisée</button></div>
   <details open=""><summary>Contenu de la page</summary><div class="admin-grid" id="configFields"><div class="field"><label>Nom du projet</label><input id="cfg_project"></div><div class="field"><label>Couleur principale (#hex)</label><input id="cfg_primary"></div><div class="field"><label>Badge</label><input id="cfg_badge"></div><div class="field"><label>Secteur géographique</label><input id="cfg_sector"></div><div class="field"><label>Titre principal</label><input id="cfg_title"></div><div class="field"><label>Loyer (nombre)</label><input id="cfg_rent"></div><div class="field"><label>Libellé du loyer</label><input id="cfg_rentLabel"></div><div class="field wide"><label>URL photo</label><input id="cfg_photo"></div><div class="field wide"><label>Description</label><textarea id="cfg_description" rows="3"></textarea></div><div class="field"><label>Nom conseiller / agence</label><input id="cfg_advisor"></div><div class="field"><label>Téléphone</label><input id="cfg_phone"></div><div class="field"><label>E-mail</label><input id="cfg_email"></div><div class="field"><label>Adresse agence</label><input id="cfg_agencyAddress"></div></div></details>
   <details open=""><summary>Connexion et automatisations</summary><div class="admin-grid">
