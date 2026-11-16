@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="fr" style="--primary: #D6001C;"><head>
+<!doctype html>\n<html lang="fr" style="--primary: #D6001C;"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#D6001C">
 <title>Location Accession à Castries</title>
@@ -35,14 +34,14 @@ Appartement T2 avec terrasse et jardin privatif à partir de 172.000€ (station
 
                                             Rencontrons nous pour échanger sur votre projet et valider votre éligibilité !</p>
    </article>
-   <aside class="formbox"><h2>Intéressé par cette opportunité ?</h2><div id="feedback" class="notice hidden" role="status" aria-live="polite"></div>
+   <aside class="formbox"><h2>Intéressé par cette opportunité ?</h2><div id="feedback" class="notice ok" role="status" aria-live="polite">Personnalisation enregistrée.</div>
     <form id="leadForm">
      <div class="field"><label for="name">Nom et prénom *</label><input id="name" name="name" autocomplete="name" required="" maxlength="120" placeholder="Jean Dupont"></div>
      <div class="field"><label for="phone">Téléphone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required="" maxlength="30" placeholder="06 12 34 56 78"></div>
      <div class="field"><label for="email">Adresse e-mail *</label><input id="email" name="email" type="email" autocomplete="email" required="" maxlength="180" placeholder="jean@email.fr"></div>
      <div class="field"><label>Mode de contact *</label><div class="modes"><button type="button" class="mode active" data-mode="rappel">Être rappelé</button><button type="button" class="mode" data-mode="rdv">Prendre RDV</button></div></div>
      <section id="rdvFields" class="hidden">
-      <div class="field"><label for="day">Jour souhaité *</label><select id="day" required=""><option value="2026-11-16">lundi 16 novembre</option><option value="2026-11-17">mardi 17 novembre</option><option value="2026-11-18">mercredi 18 novembre</option><option value="2026-11-19">jeudi 19 novembre</option><option value="2026-11-20">vendredi 20 novembre</option><option value="2026-11-23">lundi 23 novembre</option><option value="2026-11-24">mardi 24 novembre</option><option value="2026-11-25">mercredi 25 novembre</option><option value="2026-11-26">jeudi 26 novembre</option><option value="2026-11-27">vendredi 27 novembre</option></select></div>
+      <div class="field"><label for="day">Jour souhaité *</label><select id="day" required=""><option value="2026-11-17">mardi 17 novembre</option><option value="2026-11-18">mercredi 18 novembre</option><option value="2026-11-19">jeudi 19 novembre</option><option value="2026-11-20">vendredi 20 novembre</option><option value="2026-11-23">lundi 23 novembre</option><option value="2026-11-24">mardi 24 novembre</option><option value="2026-11-25">mercredi 25 novembre</option><option value="2026-11-26">jeudi 26 novembre</option><option value="2026-11-27">vendredi 27 novembre</option><option value="2026-11-30">lundi 30 novembre</option></select></div>
       <div class="field"><label for="slot">Créneau (1h30) *</label><select id="slot" required=""><option value="10:00–11:30">10:00–11:30</option><option value="11:00–12:30">11:00–12:30</option><option value="14:00–15:30">14:00–15:30</option><option value="15:30–17:00">15:30–17:00</option><option value="16:00–17:30">16:00–17:30</option></select></div>
       <div class="field"><label for="place">Lieu du rendez-vous *</label><select id="place"><option value="agence">En agence</option><option value="domicile">À domicile</option></select></div>
       <div class="field hidden" id="addressWrap"><label for="address">Adresse complète *</label><input id="address" maxlength="250" placeholder="Numéro, rue, code postal, ville"></div>
@@ -59,177 +58,101 @@ Appartement T2 avec terrasse et jardin privatif à partir de 172.000€ (station
  <footer class="foot"><strong id="advisor">AURELIEN BAJARD</strong> · <a id="phoneLink" href="tel:0684107146">06-84-10-71-46</a> · <a id="emailLink" href="mailto:aurelien.bajard@orpi.com">aurelien.bajard@orpi.com</a><div id="agencyAddress">188 avenue du General de Gaulle 34400 Lunel</div></footer>
  
 </div>
+
 <script>
 'use strict';
-
-const $ = id => document.getElementById(id);
-const DEFAULT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxzELL9zzZsEgryyw0wbKwBvKEnDZpbAr2__6w9ADr18jZF5GA1bS-ypqH04yharclxEQ/exec';
-
-const leadForm = $('leadForm');
-const feedback = $('feedback');
-const submitBtn = $('submitBtn');
-const nameInput = $('name');
-const phoneInput = $('phone');
-const emailInput = $('email');
-const website = $('website');
-const consent = $('consent');
-const rdvFields = $('rdvFields');
-const day = $('day');
-const slot = $('slot');
-const place = $('place');
-const address = $('address');
-const addressWrap = $('addressWrap');
-
-const SLOTS = ['10:00–11:30', '11:00–12:30', '14:00–15:30', '15:30–17:00', '16:00–17:30'];
-let mode = 'rappel';
-
-function showMessage(message, ok) {
-  feedback.textContent = message;
-  feedback.className = 'notice ' + (ok ? 'ok' : 'err');
+const ENDPOINT="https://script.google.com/macros/s/AKfycbxzELL9zzZsEgryyw0wbKwBvKEnDZpbAr2__6w9ADr18jZF5GA1bS-ypqH04yharclxEQ/exec";
+const $=id=>document.getElementById(id);
+const form=$('leadForm'), feedback=$('feedback'), submitBtn=$('submitBtn');
+const nameInput=$('name'), phoneInput=$('phone'), emailInput=$('email');
+const website=$('website'), consent=$('consent'), rdvFields=$('rdvFields');
+const day=$('day'), slot=$('slot'), place=$('place'), address=$('address');
+const addressWrap=$('addressWrap');
+let mode='rappel';
+const SLOTS=['10:00–11:30','11:00–12:30','14:00–15:30','15:30–17:00','16:00–17:30'];
+function showMessage(message,ok){
+ feedback.textContent=message;
+ feedback.className='notice '+(ok?'ok':'err');
 }
-
-function setMode(nextMode) {
-  mode = nextMode;
-  document.querySelectorAll('[data-mode]').forEach(button => {
-    button.classList.toggle('active', button.dataset.mode === nextMode);
-  });
-  rdvFields.classList.toggle('hidden', nextMode !== 'rdv');
-  day.required = nextMode === 'rdv';
-  slot.required = nextMode === 'rdv';
+function setMode(next){
+ mode=next;
+ document.querySelectorAll('[data-mode]').forEach(button=>button.classList.toggle('active',button.dataset.mode===mode));
+ rdvFields.classList.toggle('hidden',mode!=='rdv');
+ day.required=mode==='rdv';
+ slot.required=mode==='rdv';
 }
-
-document.querySelectorAll('[data-mode]').forEach(button => {
-  button.addEventListener('click', () => setMode(button.dataset.mode));
-});
-
-function initDays() {
-  day.innerHTML = '';
-  const date = new Date();
-  let added = 0;
-  while (added < 10) {
-    date.setDate(date.getDate() + 1);
-    if (date.getDay() !== 0 && date.getDay() !== 6) {
-      const value = [
-        date.getFullYear(),
-        String(date.getMonth() + 1).padStart(2, '0'),
-        String(date.getDate()).padStart(2, '0')
-      ].join('-');
-      day.add(new Option(
-        date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }),
-        value
-      ));
-      added++;
-    }
+document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>setMode(button.dataset.mode)));
+function initDays(){
+ day.innerHTML='';
+ const date=new Date();
+ let count=0;
+ while(count<10){
+  date.setDate(date.getDate()+1);
+  if(date.getDay()!==0 && date.getDay()!==6){
+   const value=[date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');
+   day.add(new Option(date.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}),value));
+   count++;
   }
+ }
 }
-
-function refreshSlots() {
-  slot.innerHTML = '';
-  SLOTS.forEach(value => slot.add(new Option(value, value)));
-}
-
-place.addEventListener('change', () => {
-  const atHome = place.value === 'domicile';
-  addressWrap.classList.toggle('hidden', !atHome);
-  address.required = atHome;
+function refreshSlots(){slot.innerHTML='';SLOTS.forEach(value=>slot.add(new Option(value,value)));}
+place.addEventListener('change',()=>{
+ addressWrap.classList.toggle('hidden',place.value!=='domicile');
+ address.required=place.value==='domicile';
 });
-
-function submitViaForm(url, data) {
-  return new Promise((resolve, reject) => {
-    const frameName = 'oci_submit_' + Date.now() + '_' + Math.random().toString(36).slice(2);
-    const iframe = document.createElement('iframe');
-    iframe.name = frameName;
-    iframe.style.display = 'none';
-    iframe.title = 'Réponse du service de demande';
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = url;
-    form.target = frameName;
-    form.style.display = 'none';
-
-    const field = document.createElement('input');
-    field.type = 'hidden';
-    field.name = 'payload';
-    field.value = JSON.stringify(data);
-    form.appendChild(field);
-
-    let finished = false;
-    const cleanup = () => {
-      window.removeEventListener('message', onMessage);
-      form.remove();
-      iframe.remove();
-      clearTimeout(timer);
-    };
-    const onMessage = event => {
-      if (!event.data || event.data.type !== 'OCI_RESULT' || finished) return;
-      finished = true;
-      cleanup();
-      resolve(event.data);
-    };
-    const timer = setTimeout(() => {
-      if (finished) return;
-      finished = true;
-      cleanup();
-      reject(new Error('Aucune réponse du serveur après 25 secondes. Vérifie le déploiement Apps Script et sa version.'));
-    }, 25000);
-
-    window.addEventListener('message', onMessage);
-    document.body.appendChild(iframe);
-    document.body.appendChild(form);
-    try {
-      form.submit();
-    } catch (error) {
-      if (!finished) {
-        finished = true;
-        cleanup();
-        reject(error);
-      }
-    }
-  });
-}
-
-leadForm.addEventListener('submit', async event => {
-  event.preventDefault();
-  feedback.className = 'notice hidden';
-
-  if (website.value) return;
-  if (!leadForm.reportValidity()) return;
-
-  const data = {
-    date_saisie: new Date().toISOString(),
-    nom: nameInput.value.trim(),
-    telephone: phoneInput.value.trim(),
-    email: emailInput.value.trim(),
-    type_contact: mode,
-    jour_rdv: mode === 'rdv' ? day.value : '',
-    heure_rdv: mode === 'rdv' ? slot.value : '',
-    lieu_rdv: mode === 'rdv' ? place.value : '',
-    adresse_domicile: mode === 'rdv' && place.value === 'domicile' ? address.value.trim() : '',
-    consentement: consent.checked
+function submitViaForm(data){
+ return new Promise((resolve,reject)=>{
+  const frameName='oci_submit_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  const iframe=document.createElement('iframe');
+  iframe.name=frameName;iframe.style.display='none';iframe.title='Réponse du service de demande';
+  const postForm=document.createElement('form');
+  postForm.method='POST';postForm.action=ENDPOINT;postForm.target=frameName;postForm.style.display='none';
+  const field=document.createElement('input');
+  field.type='hidden';field.name='payload';field.value=JSON.stringify(data);postForm.appendChild(field);
+  let finished=false;
+  const cleanup=()=>{window.removeEventListener('message',onMessage);postForm.remove();iframe.remove();clearTimeout(timer);};
+  const onMessage=event=>{
+   if(!event.data || event.data.type!=='OCI_RESULT' || finished)return;
+   finished=true;cleanup();resolve(event.data);
   };
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Enregistrement…';
-
-  try {
-    const result = await submitViaForm(DEFAULT_ENDPOINT, data);
-    if (!result.ok) throw new Error(result.error || 'Le serveur a refusé la demande.');
-    showMessage(result.message || 'Demande reçue. Vous serez recontacté(e).', true);
-    leadForm.reset();
-    setMode('rappel');
-    addressWrap.classList.add('hidden');
-    address.required = false;
-  } catch (error) {
-    showMessage('Envoi non confirmé : ' + error.message + ' Votre demande n’a pas été annoncée comme envoyée.', false);
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Valider ma demande';
-  }
+  const timer=setTimeout(()=>{
+   if(finished)return;
+   finished=true;cleanup();
+   reject(new Error('Aucune réponse du serveur après 25 secondes. Réessaie ou contacte directement le conseiller.'));
+  },25000);
+  window.addEventListener('message',onMessage);
+  document.body.appendChild(iframe);document.body.appendChild(postForm);
+  try{postForm.submit();}catch(error){if(!finished){finished=true;cleanup();reject(error);}}
+ });
+}
+form.addEventListener('submit',async event=>{
+ event.preventDefault();
+ feedback.className='notice hidden';
+ if(website.value)return;
+ if(!form.reportValidity())return;
+ const data={
+  date_saisie:new Date().toISOString(),
+  nom:nameInput.value.trim(),
+  telephone:phoneInput.value.trim(),
+  email:emailInput.value.trim(),
+  type_contact:mode,
+  jour_rdv:mode==='rdv'?day.value:'',
+  heure_rdv:mode==='rdv'?slot.value:'',
+  lieu_rdv:mode==='rdv'?place.value:'',
+  adresse_domicile:mode==='rdv' && place.value==='domicile'?address.value.trim():'',
+  consentement:consent.checked
+ };
+ submitBtn.disabled=true;submitBtn.textContent='Enregistrement…';
+ try{
+  const result=await submitViaForm(data);
+  if(!result.ok)throw new Error(result.error||'Le serveur a refusé la demande.');
+  showMessage(result.message||'Votre demande a bien été transmise. Vous recevrez une confirmation par e-mail.',true);
+  form.reset();setMode('rappel');addressWrap.classList.add('hidden');
+ }catch(error){
+  showMessage('Envoi non confirmé : '+error.message,false);
+ }finally{
+  submitBtn.disabled=false;submitBtn.textContent='Valider ma demande';
+ }
 });
-
-initDays();
-refreshSlots();
-setMode('rappel');
-</script>
-</body></html>
+setMode('rappel');initDays();refreshSlots();
+</script></body></html>
